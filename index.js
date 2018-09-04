@@ -1,49 +1,53 @@
-function distanceFromHqInBlocks(block){
-  if(block>42)
+function distanceFromHqInBlocks (blocknumber) 
+{
+  if (blocknumber > 42)
   {
-  return block -  42;
-
-  }else{
-    return 42 - block;
+    return blocknumber - 42;
   }
+ else {
+   return 42- blocknumber;
+ }
   
-  }
-  
-  
-  
-function distanceFromHqInFeet (blockNumber) {
-    if(blockNumber>42)
-  {
-  return (blockNumber -  42) * 264;
-
-  }else{
-    return (42 - blockNumber) * 264;
-  }
-}
-
-function distanceTravelledInFeet(a ,b){
-    if(b>=a)
-  {
-  return (b-a) * 264;
-
-  }else{
-    return (a-b) * 264;
-  }
 }
 
 
-function calculatesFarePrice(a,b){
-
+function distanceFromHqInFeet (feet) 
+{
+ return distanceFromHqInBlocks(feet)* 264;
   
-  if( distanceTravelledInFeet(a ,b) <=400){
-    return 0;
+}
+
+function distanceTravelledInFeet(pa1, pa2)
+{
+  if(pa2>pa1)
+  {
+    return (pa2 - pa1) *264 ;
   }
-  else if( distanceTravelledInFeet(a ,b) > 400 &&  distanceTravelledInFeet(a ,b)<= 2000){
-    return .02 * distanceTravelledInFeet(a ,b);
-  }else if ( distanceTravelledInFeet(a ,b) > 2000 && distanceTravelledInFeet(a ,b) < 2500) {
+  else 
+  {
+    return (pa1-pa2)*264;
+  }   
+}
+
+function calculatesFarePrice(pa1, pa2)
+{
+  let distance = distanceTravelledInFeet(pa1,pa2);
+  if(distance < 400)
+  {
+  return 0; 
+  }
+  else if (distance <=2000 && distance> 400 )
+  {
+    return  (distance -400)*0.02;
+  }
+  else if (distance > 2000 && distance <2500)
+  { 
     return 25;
-  } else {
-    return 'cannot travel that far';
   }
-}
-
+    
+  else 
+  {
+  return "cannot travel that far";
+  }
+    
+  }
